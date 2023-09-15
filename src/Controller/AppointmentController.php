@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Appointment;
+use App\Entity\Patient;
 use App\Form\AppointmentType;
 use App\Repository\AppointmentRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +24,11 @@ class AppointmentController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_appointment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/{patient}/new', name: 'app_appointment_new', methods: ['GET', 'POST'])]
+    public function new(Patient $patient, Request $request, EntityManagerInterface $entityManager): Response
     {
         $appointment = new Appointment();
+        $appointment->setPatient($patient)->setDate(new DateTime());
         $form = $this->createForm(AppointmentType::class, $appointment);
         $form->handleRequest($request);
 

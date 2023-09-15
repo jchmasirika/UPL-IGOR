@@ -33,7 +33,7 @@ class PatientController extends AbstractController
             $entityManager->persist($patient);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_patient_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_appointment_new', ['patient' => $patient->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('patient/new.html.twig', [

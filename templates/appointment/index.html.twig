@@ -3,14 +3,15 @@
 {% block title %}Appointment index{% endblock %}
 
 {% block body %}
-    <h1>Appointment index</h1>
+    <h1>Liste des rendez vous</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Numero</th>
                 <th>Date</th>
-                <th>Description</th>
+                <th>Patient</th>
+                <th>Medecin</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,7 +20,8 @@
             <tr>
                 <td>{{ appointment.id }}</td>
                 <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ appointment.description }}</td>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.doctor.name }}</td>
                 <td>
                     <a href="{{ path('app_appointment_show', {'id': appointment.id}) }}">show</a>
                     <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}">edit</a>
@@ -32,6 +34,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_appointment_new') }}">Create new</a>
 {% endblock %}
