@@ -3,7 +3,7 @@
 {% block title %}Appointment index{% endblock %}
 
 {% block body %}
-    <h1>Liste des rendez vous</h1>
+    <h1>Liste des rendez vous  </h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
                 <td>{{ appointment.patient.name }}</td>
                 <td>{{ appointment.doctor.name }}</td>
                 <td>
-                    <a href="{{ path('app_appointment_show', {'id': appointment.id}) }}">show</a>
-                    <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}">edit</a>
+                    <a href="{{ path('app_appointment_show', {'id': appointment.id}) }}">details</a>
+                    <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}

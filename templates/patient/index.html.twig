@@ -3,17 +3,15 @@
 {% block title %}Patient index{% endblock %}
 
 {% block body %}
-    <h1>Patient index</h1>
+    <h1>Liste des patients</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Sex</th>
-                <th>BirthDate</th>
-                <th>Address</th>
-                <th>Phone</th>
+                <th>Numéro</th>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Téléphone</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,22 +20,18 @@
             <tr>
                 <td>{{ patient.id }}</td>
                 <td>{{ patient.name }}</td>
-                <td>{{ patient.sex }}</td>
-                <td>{{ patient.birthDate ? patient.birthDate|date('Y-m-d') : '' }}</td>
-                <td>{{ patient.address }}</td>
+                <td>{{ patient.sex == 'M' ? 'Masculin' : 'Feminin' }}</td>
                 <td>{{ patient.phone }}</td>
                 <td>
-                    <a href="{{ path('app_patient_show', {'id': patient.id}) }}">show</a>
-                    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
+                    <a href="{{ path('app_patient_show', {'id': patient.id}) }}">Voir</a>
+                    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="5">Aucune occurence</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_patient_new') }}">Create new</a>
 {% endblock %}

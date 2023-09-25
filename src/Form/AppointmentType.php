@@ -23,9 +23,13 @@ class AppointmentType extends AbstractType
                 }
             ])
             ->add('date', DateTimeType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'label' => 'Date du rendez-vous',
+                'input_format' => 'Y-m-d H::s'
             ])
-            ->add('description')
+            ->add('description', null, [
+                'label' => 'Commentaires'
+            ])
         ;
     }
 

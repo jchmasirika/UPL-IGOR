@@ -3,11 +3,7 @@
 {% block title %}Edit Doctor{% endblock %}
 
 {% block body %}
-    <h1>Edit Doctor</h1>
+    <h1>Modifier medecin</h1>
 
-    {{ include('doctor/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_doctor_index') }}">back to list</a>
-
-    {{ include('doctor/_delete_form.html.twig') }}
+    {{ include('doctor/_form.html.twig', {'button_label': 'Modifier'}) }}
 {% endblock %}

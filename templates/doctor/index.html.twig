@@ -3,37 +3,34 @@
 {% block title %}Doctor index{% endblock %}
 
 {% block body %}
-    <h1>Doctor index</h1>
+    <h1>Liste des docteurs</h1>
 
+    <a class="btn btn-secondary" href="{{ path('app_doctor_new') }}">Nouveau</a>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Speciality</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Specialité</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for doctor in doctors %}
             <tr>
-                <td>{{ doctor.id }}</td>
                 <td>{{ doctor.name }}</td>
                 <td>{{ doctor.phone }}</td>
                 <td>{{ doctor.speciality }}</td>
                 <td>
-                    <a href="{{ path('app_doctor_show', {'id': doctor.id}) }}">show</a>
-                    <a href="{{ path('app_doctor_edit', {'id': doctor.id}) }}">edit</a>
+                    <a href="{{ path('app_doctor_show', {'id': doctor.id}) }}">details</a>
+                    <a href="{{ path('app_doctor_edit', {'id': doctor.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun medecin</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_doctor_new') }}">Create new</a>
 {% endblock %}

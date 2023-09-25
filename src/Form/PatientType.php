@@ -15,7 +15,9 @@ class PatientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'Nom complet du patient'
+            ])
             ->add('sex', ChoiceType::class, [
                 'choices' => [
                     'Homme' => 'M',
@@ -23,11 +25,25 @@ class PatientType extends AbstractType
                 ],
                 'label' => 'Genre'
             ])
-            ->add('birthDate', DateType::class, [
-                'widget' => 'single_text'
+            ->add('weight', null, [
+                'label' => 'Poids'
             ])
-            ->add('address', TextType::class)
-            ->add('phone')
+            ->add('bloodPressure', null, [
+                'label' => 'Tension'
+            ])
+            ->add('temperature', null, [
+                'label' => 'Température'
+            ])
+            ->add('birthDate', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date de naissance'
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Adresse de résidence'
+            ])
+            ->add('phone', null, [
+                'label' => 'Numéro de téléphone'
+            ])
         ;
     }
 

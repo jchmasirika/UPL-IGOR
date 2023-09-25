@@ -13,9 +13,15 @@ class DoctorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('phone')
-            ->add('speciality')
+            ->add('name', TextType::class, [
+                'label' => 'Nom du medecin'
+            ])
+            ->add('phone', null, [
+                'label' => 'Numéro de téléphone'
+            ])
+            ->add('speciality', null, [
+                'label' => 'Spécialité du médecin'
+            ])
         ;
     }
 

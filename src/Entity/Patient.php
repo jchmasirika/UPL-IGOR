@@ -34,6 +34,15 @@ class Patient
     #[ORM\OneToMany(mappedBy: 'patient', targetEntity: Appointment::class)]
     private Collection $appointments;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $weight = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $bloodPressure = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $temperature = null;
+
     public function __construct()
     {
         $this->appointments = new ArrayCollection();
@@ -130,6 +139,42 @@ class Patient
                 $appointment->setPatient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getWeight(): ?float
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?float $weight): static
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getBloodPressure(): ?float
+    {
+        return $this->bloodPressure;
+    }
+
+    public function setBloodPressure(?float $bloodPressure): static
+    {
+        $this->bloodPressure = $bloodPressure;
+
+        return $this;
+    }
+
+    public function getTemperature(): ?float
+    {
+        return $this->temperature;
+    }
+
+    public function setTemperature(?float $temperature): static
+    {
+        $this->temperature = $temperature;
 
         return $this;
     }

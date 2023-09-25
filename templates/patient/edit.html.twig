@@ -3,11 +3,9 @@
 {% block title %}Edit Patient{% endblock %}
 
 {% block body %}
-    <h1>Edit Patient</h1>
+    <h1>Modifier le patient</h1>
 
-    {{ include('patient/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_patient_index') }}">back to list</a>
-
-    {{ include('patient/_delete_form.html.twig') }}
+    <a class="btn btn-secondary" href="{{ path('app_patient_show', { 'id': patient.id}) }}">Detail du patient</a>
+    <hr/>
+    {{ include('patient/_form.html.twig', {'button_label': 'Modifier'}) }}
 {% endblock %}

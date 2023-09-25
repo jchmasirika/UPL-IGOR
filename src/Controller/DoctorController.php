@@ -59,7 +59,7 @@ class DoctorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_doctor_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_doctor_show', ['id' => $doctor->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('doctor/edit.html.twig', [
